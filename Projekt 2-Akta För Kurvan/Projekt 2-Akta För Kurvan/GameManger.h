@@ -22,15 +22,16 @@ public:
 	void Update(sf::RenderWindow &window);
 	void Draw(sf::RenderWindow &window);
 private:
-	Player players[MAX_PLAYERS];
+	MyVector<Body> TempBodyHolder;
 	MyVector<PowerUpp> powerUpps;
+	Player players[MAX_PLAYERS];
+	bool Running;
+	int GameState;
 	int amountOffPlayers;
-	sf::Int64 TimeElapsed;
 	sf::Clock clock;
 	sf::Event event;
 	sf::Int32 SpawnTimeElapsed;
-	bool Running;
-	int GameState;
+	sf::Int64 TimeElapsed;
 	sf::Keyboard::Key LastKeyDown;
 };
 
