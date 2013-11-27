@@ -12,10 +12,10 @@ class Body : public Rectangle
 public:
 	Body(void);
 	Body(sf::Texture texture);
-	Body(sf::Texture texture, float X, float Y,sf::Color color);
 	~Body(void);
 	void SetTexture( sf::Texture texture );
 	void UpdateSprite();
+private:
 
 };
 

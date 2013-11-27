@@ -8,7 +8,6 @@
 GameManger::GameManger(void)
 {
 	TimeElapsed = clock.getElapsedTime().asMicroseconds();
-	amountOffPlayers = 2;
 	clock.restart();
 	GameState=0;
 }
@@ -29,7 +28,7 @@ void GameManger::start(sf::RenderWindow &window)
 		Update(window);
 
 		// Draw	
-		this->Draw(window);
+		Draw(window);
 
 		// Display
 		window.display();
@@ -51,11 +50,6 @@ void GameManger::Draw( sf::RenderWindow &window )
 	case 1:
 		{
 			//Fix Game Drawing
-			for (int i = 0; i < amountOffPlayers; i++)
-			{
-				players[i].RenderBody(window);
-				players[i].Draw(window);
-			}
 			break;
 		}
 	}
@@ -83,14 +77,7 @@ void GameManger::Update(sf::RenderWindow &window)
 	case 0:
 		{
 			//fix gui Update
-			players[0].Keys()[0] = Keyboard::Left;
-			players[0].Keys()[1] = Keyboard::Right;
-			players[0].SetColor(sf::Color::White);
-			players[0].SetPos(200,200);
-			players[1].Keys()[0] = Keyboard::A;
-			players[1].Keys()[1] = Keyboard::S;
-			
-			GameState = 1;
+
 			break;
 		}
 	case 1:

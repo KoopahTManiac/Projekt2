@@ -11,26 +11,21 @@ class Rectangle
 {
 public:
 	Rectangle(void);
+	~Rectangle(void);
 	bool intersect(Rectangle rect) const;
-	int GetHeight() const;
+	int GetX() const;
+	int GetY() const;
 	int GetWidth() const;
-	float GetX() const;
-	float GetY() const;
-	sf::Sprite GetSprite();
-	void Draw(sf::RenderWindow & window );
+	int GetHeight() const;
+	void SetX(int X);
+	void SetY(int Y);
+	void SetWidth(int Width);
 	void SetHeight(int Height);
-	void SetPos(float X,float Y);
-	void SetSize(double size);
+	void SetPos(int X,int Y);
 	void SetSize(int Width, int Height);
 	void SetTexture(sf::Texture texture);
-	void SetWidth(int Width);
-	void SetX(float X);
-	void SetY(float Y);
-	~Rectangle(void);
 protected:
-	float X,Y;
-	int Width,Height;
-	float size;
+	int X,Y,Width,Height;
 	sf::Texture texture;
 	sf::Sprite sprite;
 };

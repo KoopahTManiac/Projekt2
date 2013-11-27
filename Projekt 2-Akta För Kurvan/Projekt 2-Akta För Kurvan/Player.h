@@ -6,8 +6,6 @@
 #include "PowerUpp.h"
 #include "MyVector.h"
 #include "Body.h"
-#include <vector>
-
 //////////////////////////////////////////////////////////////////////////
 //						Made By Zoran Ostojic Zoos13					//
 //								2013-11-26								//
@@ -16,38 +14,23 @@
 using namespace std;
 class Player : public Rectangle
 {
-	static const int SizeOfBodyPartsToStartWith=1000;
-	static const int SpawnRateInMilis = (1000/60)*2;
 public:
-	MyVector<Body> & GetBodyParts();
 	Player(void);
-	float GetSpeed() const;
-	int GetSize() const;
-	sf::Keyboard::Key * Keys();
-	void Move();
-	void RenderBody(sf::RenderWindow & window);
-	void ResetBody();
-	void SetSize(int val);
-	void SetSpeed(float val);
-	void SetTexture(sf::Texture texture);
-	void SpawnBody();
-	void Update(double TimeElapsed);
-	void UpdateBuffs();
-	void UpdateSprite();
 	~Player(void);
-	void SetColor(sf::Color color);
+	void Move();
+	void Update(double TimeElapsed);
+	int GetSize() const;
+	void SetSize(int val);
+	double GetSpeed() const;
+	void SetSpeed(double val);
+	void UpdateBuffs();
+	void SetTexture(sf::Texture texture);
+	void UpdateSprite();
 private:
-	
-	MyVector<Body> BodyParts; //My own vector Class MyVector.h and MyVector.cpp 2013-11-26
-	double SpawnTimeElapsed;
 	int size;
-	int AmountOfBodyParts;
-	sf::Color color;
+	double speed;
 	sf::Keyboard::Key pKeys[4]; // keeps track for bound key mapping for each player
-	sf::Vector2f Volicity;
-	float speed;
-	float Rotation;
-	bool spawnBodyParts;
+	MyVector<Body> BodyParts;     //My own vector Class MyVector.h and MyVector.cpp 2013-11-26
 };
 
 #endif // Player_h__

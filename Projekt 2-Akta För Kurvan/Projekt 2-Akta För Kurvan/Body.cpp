@@ -8,27 +8,11 @@
 Body::Body(void)
 {
 	texture.loadFromFile("Circle.png");
-	sprite = sf::Sprite();
-	sprite.setTexture(texture);
 }
 
 Body::Body(sf::Texture texture)
 {
-	sprite = sf::Sprite();
 	this->texture = texture;
-	sprite.setTexture(texture);
-}
-
-Body::Body( sf::Texture texture, float X, float Y, sf::Color color )
-{
-	size =1;
-	sprite = sf::Sprite();
-	this->texture = texture;
-	this->X=X;
-	this->Y=Y;
-	sprite.setPosition(X,Y);
-	sprite.setTexture(texture);
-	sprite.setColor(color);
 }
 
 Body::~Body(void)
@@ -44,3 +28,4 @@ void Body::UpdateSprite()
 {
 	sprite.setTexture(texture);
 }
+
