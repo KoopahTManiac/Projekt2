@@ -8,6 +8,8 @@
 
 Rectangle::Rectangle(void)
 {
+	size =1;
+	
 }
 
 
@@ -16,12 +18,12 @@ Rectangle::~Rectangle(void)
 
 }
 
-int Rectangle::GetX() const
+float Rectangle::GetX() const
 {
 	return X;
 }
 
-int Rectangle::GetY() const
+float Rectangle::GetY() const
 {
 	return Y;
 }
@@ -36,14 +38,16 @@ int Rectangle::GetHeight() const
 	return Height;
 }
 
-void Rectangle::SetX( int X )
+void Rectangle::SetX( float X )
 {
 	this->X = X;
+	sprite.setPosition(X,Y);
 }
 
-void Rectangle::SetY( int Y )
+void Rectangle::SetY( float Y )
 {
 	this->Y= Y;
+	sprite.setPosition(X,Y);
 }
 
 void Rectangle::SetWidth( int Width )
@@ -56,16 +60,19 @@ void Rectangle::SetHeight( int Height )
 	this->Height=Height;
 }
 
-void Rectangle::SetPos( int X,int Y )
+void Rectangle::SetPos( float X,float Y )
 {
 	this->X=X;
 	this->Y=Y;
+	sprite.setPosition(X,Y);
 }
 
 void Rectangle::SetSize( int Width, int Height )
 {
 	this->Width = Width;
 	this->Height = Height;
+	sprite.setTexture(texture);
+	sprite.setScale(size,size);
 }
 
 bool Rectangle::intersect( Rectangle rect ) const
@@ -77,8 +84,22 @@ bool Rectangle::intersect( Rectangle rect ) const
 	return false;
 }
 
-void Rectangle::SetTexture( sf::Texture texture )
+void Rectangle::SetTexture( sf::Texture texture)
 {
 	this->texture=texture;
 }
+void Rectangle::SetSize(double size)
+{
+	this->size=size;
+	sprite.scale(size,size);
+}
 
+void Rectangle::Draw(sf::RenderWindow & window )
+{
+	window.draw(sprite);
+}
+
+sf::Sprite Rectangle::GetSprite()
+{
+	return sprite;
+}

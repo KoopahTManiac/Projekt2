@@ -21,8 +21,6 @@ public:
 protected:
 	int type;
 	int duration;
-	sf::Texture texture;
-	sf::Sprite sprite;
 
 };
 #endif // PowerUpp_h__
