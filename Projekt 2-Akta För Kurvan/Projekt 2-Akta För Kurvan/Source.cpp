@@ -1,5 +1,7 @@
 #include<SFML\Graphics.hpp>
 #include"GameManger.h"
+#include<ctime>
+#include<cstdlib>
 using namespace sf;
 
 //////////////////////////////////////////////////////////////////////////
@@ -10,13 +12,13 @@ using namespace sf;
 
 int main ()
 {
-	
+	srand((unsigned int)time(0));
 	_CrtSetDbgFlag( _CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	sf::RenderWindow window(sf::VideoMode(800,600),"Akta För Kurvan");
-	window.setVerticalSyncEnabled(true);
+	//window.setVerticalSyncEnabled(true);
 	window.setFramerateLimit(60);
 	
 	GameManger manager;
-
+	
 	manager.start(window);
 }

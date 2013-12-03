@@ -7,28 +7,32 @@
 
 Body::Body(void)
 {
-	texture.loadFromFile("Circle.png");
-	sprite = sf::Sprite();
-	sprite.setTexture(texture);
+	X=0;
+	Y=0;
+	size =0;
+	Width =0;
+	Height=0;
 }
 
-Body::Body(sf::Texture texture)
+Body::Body(sf::Texture & texture)
 {
 	sprite = sf::Sprite();
 	this->texture = texture;
 	sprite.setTexture(texture);
 }
 
-Body::Body( sf::Texture texture, float X, float Y, sf::Color color )
+Body::Body(sf::Texture & texture, float X, float Y,sf::Color & color,float size,int width,int height)
 {
-	size =1;
-	sprite = sf::Sprite();
 	this->texture = texture;
 	this->X=X;
 	this->Y=Y;
-	sprite.setPosition(X,Y);
+	this->size = size;
+	Width = width;
+	Height = height;
 	sprite.setTexture(texture);
+	sprite.setPosition(X,Y);
 	sprite.setColor(color);
+	//sprite.setScale(this->size);
 }
 
 Body::~Body(void)
@@ -38,9 +42,15 @@ Body::~Body(void)
 void Body::SetTexture( sf::Texture texture )
 {
 	this->texture = texture;
+	UpdateSprite();
 }
 
 void Body::UpdateSprite()
 {
 	sprite.setTexture(texture);
+}
+
+void Body::SetColor( sf::Color color )
+{
+	sprite.setColor(color);
 }

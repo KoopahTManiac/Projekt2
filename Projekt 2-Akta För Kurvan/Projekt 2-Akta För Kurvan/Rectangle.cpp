@@ -9,7 +9,6 @@
 Rectangle::Rectangle(void)
 {
 	size =1;
-	
 }
 
 
@@ -69,13 +68,13 @@ void Rectangle::SetPos( float X,float Y )
 
 void Rectangle::SetSize( int Width, int Height )
 {
-	this->Width = Width;
-	this->Height = Height;
-	sprite.setTexture(texture);
+	size = Width / this->Width;
+	this->Width = texture.getSize().x*size;
+	this->Height = texture.getSize().y*size;
 	sprite.setScale(size,size);
 }
 
-bool Rectangle::intersect( Rectangle rect ) const
+bool Rectangle::intersect( Rectangle & rect ) const
 {
 	if (X <= rect.X+rect.Width && X+Width >= rect.X && Y <= rect.Y+rect.Height && Y+Height >= rect.Y)
 	{
@@ -84,14 +83,16 @@ bool Rectangle::intersect( Rectangle rect ) const
 	return false;
 }
 
-void Rectangle::SetTexture( sf::Texture texture)
+void Rectangle::SetTexture( sf::Texture & texture )
 {
 	this->texture=texture;
 }
 void Rectangle::SetSize(double size)
 {
 	this->size=size;
-	sprite.scale(size,size);
+	this->Width = texture.getSize().x*size;
+	this->Height = texture.getSize().y*size;
+	sprite.setScale(size,size);
 }
 
 void Rectangle::Draw(sf::RenderWindow & window )

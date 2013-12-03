@@ -2,6 +2,7 @@
 #define PowerUpp_h__
 
 #include "Rectangle.h"
+#include "Player.h"
 #include <SFML/Graphics.hpp>
 //////////////////////////////////////////////////////////////////////////
 //						Made By Zoran Ostojic Zoos13					//
@@ -13,15 +14,28 @@ class PowerUpp : public Rectangle
 {
 public:
 	PowerUpp();
+	PowerUpp(PowerUpp &powerUpp);
+	PowerUpp( float X, float Y , int type);
 	~PowerUpp();
-	int GetDuration() const;
-	int GetType() const;
-	void SetDuration(int val);
-	void SetType(int val);
+	Player GetOwner() const;
+	bool UpdateBuff( float TimeElapsed);
+	float GetDuration() const;
+	void ApplyBuff( Player * player , int corrent, int size);
+	void UnApplyBuff(Player * player , int corrent, int size);
+	void SetOwner(Player * player , int corrent, int size);
+	void SetActive(bool active);
+	void SetDuration(float val);
+	void DrawBuff(sf::RenderWindow & window);
+	void SetType(int type);
+	int GetType();
+	bool GetActive();
 protected:
+	float duration;
+	Player *owner;
+	bool active;
 	int type;
-	int duration;
-
+	int corrent;
+	int sizeOfPlayers;
 };
 #endif // PowerUpp_h__
 

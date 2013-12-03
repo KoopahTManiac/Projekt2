@@ -11,7 +11,7 @@ class Rectangle
 {
 public:
 	Rectangle(void);
-	bool intersect(Rectangle rect) const;
+	bool intersect(Rectangle & rect) const;
 	int GetHeight() const;
 	int GetWidth() const;
 	float GetX() const;
@@ -22,7 +22,7 @@ public:
 	void SetPos(float X,float Y);
 	void SetSize(double size);
 	void SetSize(int Width, int Height);
-	void SetTexture(sf::Texture texture);
+	void SetTexture(sf::Texture & texture);
 	void SetWidth(int Width);
 	void SetX(float X);
 	void SetY(float Y);

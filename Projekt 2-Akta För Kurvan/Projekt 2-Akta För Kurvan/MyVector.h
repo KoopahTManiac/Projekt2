@@ -28,7 +28,7 @@ template<class T> class MyVector
 		void Resize(int size);
 		void operator = (MyVector&);
 		void Copy(MyVector &vec);
-		void push_back(T);
+		template<class Y> void push_back(Y&);
 		void pop_back();
 		int Size();
 		int Capacity();
@@ -38,6 +38,24 @@ template<class T> class MyVector
 		T& Back();
 		void ResetVector();
 };
+
+template<class T>
+MyVector<T>::MyVector( const MyVector& vec)
+{
+	if (Arr != vec.Arr)
+	{
+		for (int i =0; i < size; i++)
+		{
+			delete Arr[i];
+		}
+		delete[] Arr;
+		Arr = vec.Arr;
+	}
+	else
+	{
+		Arr = vec.Arr;
+	}
+}
 
 template<class T>
 void MyVector<T>::Resize(int size)
@@ -66,7 +84,6 @@ template<class T> MyVector<T>::~MyVector()
 }
 template<class T> MyVector<T>::MyVector(int Size)
 {
-	increase = 2.5f;
 	Alloc(Size);
 }
 template<class T> MyVector<T>::MyVector()
@@ -91,7 +108,7 @@ template<class T> void MyVector<T>::NewAlloc()
 	else
 	{
 		oldSize = maxSize;
-		maxSize *= increase;
+		maxSize =(int)(maxSize * increase);
 		T **tempArr = new T*[maxSize];
 		for (int i=0; i < oldSize; i++)
 		{
@@ -162,18 +179,18 @@ template<class T> T& MyVector<T>::At(int pos)
 }
 template<class T> void MyVector<T>::operator=(MyVector &vec)
 {
-	if (&vec != &Arr)
+	if (Arr != vec.Arr)
 	{
 		for (int i =0; i < size; i++)
 		{
 			delete Arr[i];
 		}
 		delete[] Arr;
-		Arr = vec;
+		Arr = vec.Arr;
 	}
 	else
 	{
-		Arr = vec;
+		Arr = vec.Arr;
 	}
 }
 template<class T> void MyVector<T>::Copy(MyVector &vec)
@@ -199,7 +216,7 @@ template<class T> void MyVector<T>::erase( int pos )
 	Arr[pos] = nullptr;
 	for (int i=pos; i < size; i++)
 	{
-		if (i >0 && i+1 < size)
+		if (i >=0 && i+1 < size)
 		{
 			Arr[i] = Arr[i+1];
 			Arr[i+1] = nullptr;
@@ -229,17 +246,17 @@ template<class T> void MyVector<T>::pop_back()
 	size--;
 }
 
-template<class T> void MyVector<T>::push_back( T Obj )
+template<class T> template<class Y> void MyVector<T>::push_back( Y & Obj )
 {
 	if (size >= maxSize)
 	{
 		NewAlloc();
-		Arr[size] = new T(Obj);
+		Arr[size] = new Y(Obj);
 		size++;
 	}
 	else
 	{
-		Arr[size] = new T(Obj);
+		Arr[size] = new Y(Obj);
 		size++;
 	}
 }

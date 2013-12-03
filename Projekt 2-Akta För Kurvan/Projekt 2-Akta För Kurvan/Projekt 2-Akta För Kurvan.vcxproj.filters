@@ -31,12 +31,12 @@
     <Filter Include="Source Files\Vector">
       <UniqueIdentifier>{fbcee691-5010-4078-a30b-f96259e4a0f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\PowerUpps">
+      <UniqueIdentifier>{8d5b862d-b761-4339-bc83-eb0decc83c1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameManger.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
@@ -53,6 +53,9 @@
     </ClCompile>
     <ClCompile Include="MyVector.cpp">
       <Filter>Source Files\Vector</Filter>
+    </ClCompile>
+    <ClCompile Include="GameManger.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +81,12 @@
   <ItemGroup>
     <Image Include="Circle.png">
       <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Speed.png">
+      <Filter>Resource Files\PowerUpps</Filter>
+    </Image>
+    <Image Include="ASpeed.png">
+      <Filter>Resource Files\PowerUpps</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
